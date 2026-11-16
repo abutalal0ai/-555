@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="أبو طلال - موقع تجاري وألعاب تعليمية بسيطة">
+<title>أبو طلال</title>
+<style>
+:root{--gold:#b58a32;--gold-dark:#89651e;--cream:#fff9eb;--ink:#29251e;--muted:#716b60;--line:#eee4d1}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#fff;color:var(--ink);line-height:1.8}
+.wrap{width:min(1080px,92%);margin:auto}header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5}
+nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.logo{font-size:1.4rem;font-weight:bold;color:var(--gold-dark)}
+nav a{color:var(--ink);text-decoration:none}.navlinks{display:flex;gap:20px}.hero{background:linear-gradient(130deg,#fff7e4,#fff);padding:65px 0}
+h1{font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.3;margin:10px 0}.gold{color:var(--gold-dark)}.muted{color:var(--muted)}
+.btn{border:0;border-radius:10px;padding:10px 18px;background:var(--gold);color:#fff;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}.btn:hover{background:var(--gold-dark)}
+section{padding:48px 0}.sectionhead{text-align:center;margin:0 0 8px;font-size:2rem}.center{text-align:center}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}
+.card{border:1px solid var(--line);border-radius:17px;padding:24px;background:#fff;box-shadow:0 5px 18px #6c50100b}.card h3{margin:0 0 8px}.gameicon{font-size:2rem}
+footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:var(--muted)}
+.gamebox{max-width:620px;margin:22px auto 0;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:18px;text-align:center}
+.stats{display:flex;justify-content:center;gap:25px;font-weight:bold;margin-bottom:10px}
+canvas{display:block;width:min(100%,420px);height:auto;aspect-ratio:1;margin:12px auto;background:#fff;border:2px solid #d9c18d;border-radius:10px;touch-action:none}
+.gamecontrols{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:10px}
+#gameMsg{min-height:30px;font-weight:bold;color:var(--gold-dark)}
+.letter{font-size:2.4rem;font-weight:bold;color:var(--gold-dark);background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;min-width:70px}
+.letterchoices{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.letterchoices button{font-size:1.6rem;min-width:65px;background:#fff;border:2px solid #e8d9b8;border-radius:12px;padding:8px;cursor:pointer}
+.letterchoices button:hover{border-color:var(--gold);background:var(--cream)}
+@media(max-width:650px){.cards{grid-template-columns:1fr}.navlinks{gap:9px;font-size:.85rem}nav{flex-wrap:wrap;padding:10px 0}}
+#welcomeScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;background:radial-gradient(ellipse at 50% 42%,#292216 0%,#12100c 52%,#050505 100%)}
+.welcome-card{width:min(92vw,760px);min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:50px 24px;background:linear-gradient(145deg,#1b1b1b,#090909);border:1px solid #c6a45e;border-radius:30px;box-shadow:0 28px 80px rgba(0,0,0,.65),inset 0 0 0 8px rgba(198,164,94,.10),inset 0 0 0 10px #171717}
+.welcome-card:before,.welcome-card:after{content:"✦";position:absolute;color:#d5b56b;font-size:25px}
+.welcome-card:before{top:28px;right:32px}.welcome-card:after{bottom:28px;left:32px}
+.welcome-rule{width:92px;height:3px;border-radius:9px;background:linear-gradient(90deg,#8b6727,#e5cb86,#8b6727);margin-bottom:28px}
+.welcome-title{font-size:clamp(3.3rem,10vw,6rem);letter-spacing:1px;margin:0 0 38px;font-weight:800;background:linear-gradient(110deg,#9a742f 5%,#f1d58c 48%,#b58a32 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.welcome-button{border:1px solid #9b7735;border-radius:999px;padding:15px 62px;color:#fff;font-size:1.2rem;font-weight:bold;cursor:pointer;background:linear-gradient(135deg,#76531e,#c4a052 52%,#8a672b);box-shadow:0 9px 24px rgba(128,93,34,.28);transition:transform .2s}
+.welcome-button:hover{transform:translateY(-3px)}
+#siteContent{display:none}
+:root{--cream:#17140f;--ink:#f3ead8;--muted:#c1b69f;--line:#514326;--gold:#c7a052;--gold-dark:#e0bd70}
+body{background:#090909;color:#f3ead8}
+header{background:#101010;border-bottom-color:#6b542b}
+nav a{color:#f3ead8}
+.hero{background:linear-gradient(130deg,#17130c,#090909)}
+.card{background:#151515;border-color:#6b542b;box-shadow:0 8px 24px #0008}
+.gamebox{background:#17140f;border-color:#6b542b}
+canvas{background:#0b0b0b;border-color:#c7a052}
+.letter{background:#17140f;border-color:#6b542b;color:#e0bd70}
+.letterchoices button{background:#151515;color:#f3ead8;border-color:#6b542b}
+.letterchoices button:hover{background:#292113}
+footer{color:#c1b69f;border-top-color:#6b542b}
+</style>
+</head>
+<body>
+<div id="welcomeScreen"><div class="welcome-card"><div class="welcome-rule"></div><h1 class="welcome-title">أبو طلال</h1><button class="welcome-button" type="button" onclick="enterSite()">ابدأ</button></div></div>
+<div id="siteContent">
+<header><nav class="wrap"><a class="logo" href="#">أبو طلال</a><div class="navlinks"><a href="#games">الألعاب</a><a href="#about">عن الموقع</a></div><a class="btn" href="#games">ابدأ اللعب</a></nav></header>
+<main>
+<section class="hero"><div class="wrap"><p class="gold"><b>أهلاً وسهلاً بك</b></p><h1>موقع <span class="gold">أبو طلال</span></h1><p class="muted">العب وتعلّم واستمتع! اختر لعبتك المفضلة من الأسفل.</p><a class="btn" href="#games">اكتشف الألعاب</a></div></section>
+<section id="games" class="wrap"><h2 class="sectionhead">الألعاب</h2><p class="center muted">اختر لعبة وابدأ التحدي.</p><div class="cards">
+<article class="card"><div class="gameicon">📚</div><h3>ركن القصص</h3><p class="muted">اقرأ قصصاً قصيرة ممتعة فيها مغامرات وعبر جميلة.</p><button class="btn" onclick="showGame('stories')">اقرأ القصص</button></article>
+<article class="card"><div class="gameicon">🎨</div><h3>مساحة الرسم</h3><p class="muted">ارسم بحرية، اختر الألوان، وامسح أو نزّل رسومتك.</p><button class="btn" onclick="showGame('draw')">افتح الرسم</button></article>
+<article class="card"><div class="gameicon">🐍</div><h3>لعبة الثعبان</h3><p class="muted">حرّك الثعبان واجمع الطعام، ولا تصطدم بالجدار أو بنفسك.</p><button class="btn" onclick="showGame('snake')">العب الآن</button></article>
+<article class="card"><div class="gameicon">🔤</div><h3>تعلّم الحروف</h3><p class="muted">تعرّف على الحروف العربية واختر الحرف الصحيح.</p><button class="btn" onclick="showGame('letters')">ابدأ التعلّم</button></article>
+</div></section>
+<section id="playarea" class="wrap" hidden><h2 id="gameTitle" class="sectionhead"></h2>
+<div id="storiesPanel" class="gamebox" hidden><h3 id="storyTitle" class="gold">الأرنب والسلحفاة</h3><p id="storyText" style="text-align:right;white-space:pre-line;line-height:2"></p><div class="gamecontrols"><button class="btn" onclick="changeStory(-1)">القصة السابقة</button><button class="btn" onclick="changeStory(1)">القصة التالية</button></div><p class="muted" id="storyCount"></p></div>
+<div id="drawPanel" class="gamebox" hidden><p>ارسم شيئاً جميلاً! اختر اللون وحجم الفرشاة، ثم ابدأ على اللوحة.</p><div class="gamecontrols"><label>اللون <input id="brushColor" type="color" value="#b58a32" aria-label="لون الفرشاة"></label><label>حجم القلم <input id="brushSize" type="range" min="2" max="30" value="6"></label><button class="btn" id="eraser">ممحاة</button><button class="btn" id="clearDrawing">مسح اللوحة</button><button class="btn" id="downloadDrawing">تحميل رسومي</button></div><canvas id="drawingBoard" width="720" height="440" style="width:100%;max-width:720px;aspect-ratio:18/11;touch-action:none;background:white;cursor:crosshair"></canvas></div>
+<div id="snakePanel" class="gamebox" hidden><div class="stats"><span>النقاط: <b id="score">0</b></span><span>أفضل نتيجة: <b id="best">0</b></span></div><canvas id="board" width="420" height="420" aria-label="لعبة الثعبان"></canvas><div id="gameMsg">اضغط ابدأ، واستخدم الأسهم أو WASD للتحريك.</div><div class="gamecontrols"><button class="btn" id="startSnake">ابدأ / أعد اللعب</button><button class="btn" id="pauseSnake">إيقاف مؤقت</button></div><div class="gamecontrols"><button class="btn" onclick="changeDir(0,-1)">⬆</button><button class="btn" onclick="changeDir(-1,0)">⬅</button><button class="btn" onclick="changeDir(1,0)">➡</button><button class="btn" onclick="changeDir(0,1)">⬇</button></div></div>
+<div id="lettersPanel" class="gamebox" hidden><p>اختر الحرف الذي تسمعه أو تراه في السؤال:</p><div class="letter" id="questionLetter">أ</div><div class="letterchoices" id="letterChoices"></div><p id="letterFeedback" aria-live="polite">اختر الإجابة الصحيحة.</p><p>الإجابات الصحيحة: <b id="letterScore">0</b></p><button class="btn" onclick="nextLetter()">سؤال جديد</button></div>
+</section>
+<section id="about" class="center"><div class="wrap"><h2 class="sectionhead">عن أبو طلال</h2><p class="muted">مساحة ممتعة للألعاب والتعلّم بتصميم أسود وذهبي.</p></div></section>
+</main><footer>© <span id="year"></span> أبو طلال</footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+function enterSite(){document.getElementById('welcomeScreen').style.display='none';document.getElementById('siteContent').style.display='block';window.scrollTo(0,0);}
+function showGame(which){document.getElementById('playarea').hidden=false;['snake','letters','draw','stories'].forEach(x=>document.getElementById(x+'Panel').hidden=x!==which);document.getElementById('gameTitle').textContent=which==='snake'?'🐍 لعبة الثعبان':which==='letters'?'🔤 تعلّم الحروف':which==='draw'?'🎨 مساحة الرسم':'📚 ركن القصص';document.getElementById('playarea').scrollIntoView({behavior:'smooth'});if(which==='letters'&&!letterReady){nextLetter();letterReady=true;}if(which==='stories')showStory();}
+const canvas=document.getElementById('board'),ctx=canvas.getContext('2d'),cell=21,cells=20;let snake=[],food={x:10,y:10},dir={x:1,y:0},nextDir={x:1,y:0},timer=null,score=0,running=false;let best=Number(localStorage.getItem('abuTalalSnakeBest')||0);document.getElementById('best').textContent=best;
+function draw(){ctx.fillStyle='#0b0b0b';ctx.fillRect(0,0,420,420);ctx.strokeStyle='#282216';for(let i=0;i<=420;i+=cell){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,420);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i);ctx.lineTo(420,i);ctx.stroke();}ctx.fillStyle='#e0bd70';ctx.beginPath();ctx.arc(food.x*cell+cell/2,food.y*cell+cell/2,cell*.38,0,Math.PI*2);ctx.fill();snake.forEach((p,i)=>{ctx.fillStyle=i===0?'#e0bd70':'#a7833c';ctx.fillRect(p.x*cell+2,p.y*cell+2,cell-4,cell-4);});}
+function placeFood(){do{food={x:Math.floor(Math.random()*cells),y:Math.floor(Math.random()*cells)}}while(snake.some(p=>p.x===food.x&&p.y===food.y));}
+function startSnake(){clearInterval(timer);snake=[{x:8,y:10},{x:7,y:10},{x:6,y:10}];dir={x:1,y:0};nextDir={x:1,y:0};score=0;running=true;document.getElementById('score').textContent=score;document.getElementById('gameMsg').textContent='بالتوفيق!';placeFood();draw();timer=setInterval(tick,125);}
+function tick(){dir=nextDir;let head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};let ate=head.x===food.x&&head.y===food.y;let body=ate?snake:snake.slice(0,-1);if(head.x<0||head.y<0||head.x>=cells||head.y>=cells||body.some(p=>p.x===head.x&&p.y===head.y)){clearInterval(timer);running=false;document.getElementById('gameMsg').textContent='انتهت اللعبة! نتيجتك: '+score+' — اضغط أعد اللعب.';return;}snake.unshift(head);if(ate){score++;document.getElementById('score').textContent=score;if(score>best){best=score;localStorage.setItem('abuTalalSnakeBest',best);document.getElementById('best').textContent=best;}placeFood();}else snake.pop();draw();}
+function changeDir(x,y){if(x===-dir.x&&y===-dir.y)return;nextDir={x,y};}
+document.addEventListener('keydown',e=>{let map={ArrowUp:[0,-1],w:[0,-1],ArrowDown:[0,1],s:[0,1],ArrowLeft:[-1,0],a:[-1,0],ArrowRight:[1,0],d:[1,0]};if(map[e.key]){e.preventDefault();changeDir(...map[e.key]);}});
+document.getElementById('startSnake').onclick=startSnake;document.getElementById('pauseSnake').onclick=()=>{if(running){clearInterval(timer);running=false;document.getElementById('gameMsg').textContent='توقفت اللعبة مؤقتاً.';}else if(snake.length){running=true;timer=setInterval(tick,125);document.getElementById('gameMsg').textContent='كمل اللعب!';}};draw();
+const stories=[{title:'الأرنب والسلحفاة',text:'كان أرنب سريع يفتخر بسرعته دائماً، فتحدّته سلحفاة في سباق. انطلق الأرنب بسرعة ثم نام تحت شجرة لأنه ظن أن الفوز مضمون. أما السلحفاة فواصلت السير بهدوء حتى وصلت إلى خط النهاية وفازت.\n\nالعبرة: الاستمرار والاجتهاد أهم من التفاخر.'},{title:'العصفور الصغير',text:'وجد عصفور صغير غصناً سقط من عشه، فحمله مع إخوته حتى أعادوا بناء العش. فرحت أمهم عندما عادت ورأت تعاونهم.\n\nالعبرة: التعاون يجعل العمل الصعب أسهل.'},{title:'الأمانة والكنز',text:'وجدت سارة محفظة في الحديقة، فأعطتها لوالدها ليساعدها في معرفة صاحبها. أعادوها إلى صاحبها الذي شكرها كثيراً.\n\nالعبرة: الأمانة خلق جميل.'}];let storyIndex=0;function showStory(){const s=stories[storyIndex];document.getElementById('storyTitle').textContent=s.title;document.getElementById('storyText').textContent=s.text;document.getElementById('storyCount').textContent='القصة '+(storyIndex+1)+' من '+stories.length;}function changeStory(step){storyIndex=(storyIndex+step+stories.length)%stories.length;showStory();}
+const drawingBoard=document.getElementById('drawingBoard'),dctx=drawingBoard.getContext('2d');let drawing=false,eraseMode=false,lastPoint=null;dctx.fillStyle='#ffffff';dctx.fillRect(0,0,drawingBoard.width,drawingBoard.height);function drawPoint(e){const r=drawingBoard.getBoundingClientRect();return{x:(e.clientX-r.left)*drawingBoard.width/r.width,y:(e.clientY-r.top)*drawingBoard.height/r.height};}drawingBoard.addEventListener('pointerdown',e=>{drawing=true;lastPoint=drawPoint(e);drawingBoard.setPointerCapture(e.pointerId);dctx.beginPath();dctx.arc(lastPoint.x,lastPoint.y,Number(document.getElementById('brushSize').value)/2,0,Math.PI*2);dctx.fillStyle=eraseMode?'#ffffff':document.getElementById('brushColor').value;dctx.fill();});drawingBoard.addEventListener('pointermove',e=>{if(!drawing)return;const p=drawPoint(e);dctx.beginPath();dctx.moveTo(lastPoint.x,lastPoint.y);dctx.lineTo(p.x,p.y);dctx.strokeStyle=eraseMode?'#ffffff':document.getElementById('brushColor').value;dctx.lineWidth=Number(document.getElementById('brushSize').value);dctx.lineCap='round';dctx.lineJoin='round';dctx.stroke();lastPoint=p;});function stopDrawing(){drawing=false;lastPoint=null;}drawingBoard.addEventListener('pointerup',stopDrawing);drawingBoard.addEventListener('pointercancel',stopDrawing);document.getElementById('eraser').onclick=()=>{eraseMode=!eraseMode;document.getElementById('eraser').textContent=eraseMode?'رجوع للقلم':'ممحاة';};document.getElementById('clearDrawing').onclick=()=>{dctx.fillStyle='#ffffff';dctx.fillRect(0,0,drawingBoard.width,drawingBoard.height);};document.getElementById('downloadDrawing').onclick=()=>{const a=document.createElement('a');a.download='رسم-أبو-طلال.png';a.href=drawingBoard.toDataURL('image/png');a.click();};
+const letters=['أ','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','هـ','و','ي'];let correct='',letterPoints=0,letterReady=false;function nextLetter(){correct=letters[Math.floor(Math.random()*letters.length)];document.getElementById('questionLetter').textContent=correct;document.getElementById('letterFeedback').textContent='اختر الحرف المطابق.';let opts=[correct];while(opts.length<3){let x=letters[Math.floor(Math.random()*letters.length)];if(!opts.includes(x))opts.push(x);}opts.sort(()=>Math.random()-.5);let box=document.getElementById('letterChoices');box.innerHTML='';opts.forEach(x=>{let b=document.createElement('button');b.textContent=x;b.onclick=()=>{if(x===correct){letterPoints++;document.getElementById('letterScore').textContent=letterPoints;document.getElementById('letterFeedback').textContent='أحسنت! إجابة صحيحة ⭐';}else{document.getElementById('letterFeedback').textContent='حاول مرة ثانية. الحرف الصحيح هو '+correct;}};box.appendChild(b);});}
+</script>
+</div>
+</body></html>
